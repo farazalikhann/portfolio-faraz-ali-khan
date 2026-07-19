@@ -245,6 +245,24 @@
     100%{ transform: translate(var(--drift), -620px); opacity: 0; }
   }
   .hero .container{ position: relative; z-index: 1; max-width: 720px; }
+  .hero-avatar-wrap{
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.75rem;
+  }
+  .hero-avatar{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--moss-bright);
+    box-shadow: 0 0 0 6px rgba(159,207,138,0.12), 0 20px 45px rgba(0,0,0,0.5);
+    animation: floatAvatar 5s ease-in-out infinite;
+  }
+  @keyframes floatAvatar{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-8px); }
+  }
   .hero-badge{
     display: inline-block;
     background: var(--panel-strong);
@@ -814,6 +832,9 @@
     <div class="hero-bg" id="heroBg"></div>
     <div class="particles" id="particles"></div>
     <div class="container">
+      <div class="hero-avatar-wrap">
+        <img class="hero-avatar" src="profile.jpg" alt="Faraz Ali Khan">
+      </div>
       <span class="hero-badge">Open to opportunities</span>
       <h1>Faraz Ali Khan</h1>
       <p class="role-line"><span id="typedText"></span></p>
@@ -963,20 +984,17 @@
       </div>
 
       <div class="contact-actions reveal">
-        <!-- EDIT: replace with your real email -->
-        <a href="mailto:faraz@example.com" class="contact-card">
+        <a href="mailto:farazalikhannnn@gmail.com" class="contact-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6 12 13 2 6"></path></svg>
           Email Me
         </a>
 
-        <!-- EDIT: replace MY_GITHUB_USERNAME with your GitHub username -->
         <a href="https://github.com/farazalikhann" target="_blank" rel="noopener noreferrer" class="contact-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.84 3.14 8.94 7.49 10.39.55.1.75-.24.75-.53 0-.26-.01-1.13-.01-2.05-3.05.56-3.84-.75-4.09-1.44-.14-.35-.73-1.44-1.25-1.73-.43-.23-1.04-.79-.02-.81.97-.02 1.66.89 1.89 1.26 1.11 1.86 2.87 1.34 3.57 1.02.11-.8.43-1.34.79-1.65-2.73-.31-5.59-1.36-5.59-6.06 0-1.34.48-2.44 1.26-3.3-.13-.31-.55-1.56.12-3.25 0 0 1.03-.33 3.38 1.26a11.6 11.6 0 0 1 6.16 0c2.35-1.6 3.38-1.26 3.38-1.26.67 1.69.25 2.94.12 3.25.79.86 1.26 1.95 1.26 3.3 0 4.71-2.87 5.75-5.6 6.05.44.38.83 1.13.83 2.29 0 1.65-.02 2.98-.02 3.39 0 .29.2.64.76.53 4.34-1.46 7.48-5.56 7.48-10.39C23.02 5.24 18.27.5 12 .5Z"></path></svg>
           GitHub
         </a>
 
-        <!-- EDIT: replace with your real LinkedIn URL -->
-        <a href="https://www.linkedin.com/in/MY_LINKEDIN_USERNAME" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <a href="https://www.linkedin.com/in/faraz-ali-khan-a76158288/" target="_blank" rel="noopener noreferrer" class="contact-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.36 4.25 5.44v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"></path></svg>
           LinkedIn
         </a>
