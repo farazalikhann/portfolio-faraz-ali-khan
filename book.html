@@ -144,12 +144,26 @@
     padding: 3.5rem 1.5rem 2rem;
     text-align: center;
   }
-  .book-hero-cover{
-    width: 220px;
+  .book-hero-covers{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     margin: 0 auto 1.75rem;
+  }
+  .book-hero-covers img{
+    width: 220px;
     border-radius: 8px;
     box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 60px var(--glow);
     border: 1px solid rgba(255,255,255,0.1);
+  }
+  .book-hero-covers .caption{
+    display: block;
+    margin-top: 0.6rem;
+    color: var(--text-soft);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .book-badge{
     display: inline-flex;
@@ -197,7 +211,7 @@
   /* Gallery */
   .book-gallery{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
   .book-gallery a{
@@ -296,7 +310,16 @@
 
   <header class="book-hero">
     <div class="container">
-      <img class="book-hero-cover reveal" src="book-cover.jpg" alt="AI Made Simple — book cover by Faraz Ali Khan">
+      <div class="book-hero-covers reveal">
+        <div>
+          <img src="book-cover.jpg" alt="AI Made Simple — front cover">
+          <span class="caption">Front cover</span>
+        </div>
+        <div>
+          <img src="book-back.jpg" alt="AI Made Simple — back cover">
+          <span class="caption">Back cover</span>
+        </div>
+      </div>
       <span class="book-badge"><span class="dot"></span> Available now</span>
       <h1>AI Made Simple</h1>
       <p class="author">Your Guide to Every AI Tool &mdash; by Faraz Ali Khan</p>
@@ -370,7 +393,6 @@
       <h2 style="margin-bottom: 1.5rem;">A closer look</h2>
       <div class="book-gallery">
         <a href="book-stack.jpg" target="_blank" rel="noopener noreferrer"><img src="book-stack.jpg" alt="Printed copies of AI Made Simple stacked together" loading="lazy"></a>
-        <a href="book-back.jpg" target="_blank" rel="noopener noreferrer"><img src="book-back.jpg" alt="Back cover of AI Made Simple with blurb" loading="lazy"></a>
         <a href="book-page-coding.jpg" target="_blank" rel="noopener noreferrer"><img src="book-page-coding.jpg" alt="Sample page from the coding chapter" loading="lazy"></a>
         <a href="book-page-poster.jpg" target="_blank" rel="noopener noreferrer"><img src="book-page-poster.jpg" alt="Sample page from the AI images chapter" loading="lazy"></a>
       </div>

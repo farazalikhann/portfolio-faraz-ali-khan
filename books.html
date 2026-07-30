@@ -13,7 +13,9 @@
 <style>
   :root{
     --bg: #0b1510;
+    --panel: rgba(255,255,255,0.035);
     --panel-strong: rgba(255,255,255,0.07);
+    --border: rgba(168,195,152,0.16);
     --moss: #6f9b62;
     --moss-bright: #9fcf8a;
     --sand: #d9c9a0;
@@ -28,9 +30,6 @@
   body{
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--text);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -40,7 +39,7 @@
       radial-gradient(circle at 88% 8%, #123021 0%, transparent 45%),
       radial-gradient(circle at 50% 100%, #10201730 0%, transparent 60%),
       var(--bg);
-    padding: 2rem 1.5rem;
+    padding: 3rem 2.5rem;
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -50,13 +49,45 @@
     }
   }
 
-  .wrap{ text-align: center; max-width: 380px; }
+  .page{ max-width: 960px; }
+
+  .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--moss-bright);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  h1{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--text);
+    margin: 0 0 2.5rem;
+  }
+
+  .books-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
+    justify-items: start;
+  }
+
+  .book-card{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 240px;
+  }
 
   .book-3d{
     perspective: 1200px;
-    width: 210px;
-    height: 290px;
-    margin: 0 auto 2rem;
+    width: 200px;
+    height: 276px;
+    margin-bottom: 1.25rem;
     animation: bookFloat 5s ease-in-out infinite;
   }
   @keyframes bookFloat{
@@ -73,8 +104,8 @@
   }
   .book-front, .book-spine, .book-page{ position: absolute; top: 0; }
   .book-front{
-    width: 210px;
-    height: 290px;
+    width: 200px;
+    height: 276px;
     background: linear-gradient(135deg, var(--moss) 0%, #16261b 100%);
     border-radius: 2px 8px 8px 2px;
     box-shadow: 10px 14px 34px rgba(0,0,0,0.5);
@@ -83,26 +114,26 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 1.4rem;
+    padding: 1.3rem;
     backface-visibility: hidden;
   }
   .book-front .book-title{
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #fff;
     line-height: 1.25;
     margin-bottom: 0.6rem;
   }
   .book-front .book-sub{
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--sand);
     letter-spacing: 0.03em;
   }
   .book-front .book-mark{
     margin-top: auto;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: var(--sand);
     display: flex;
@@ -113,16 +144,16 @@
     color: #16261b;
   }
   .book-spine{
-    width: 32px;
-    height: 290px;
+    width: 30px;
+    height: 276px;
     background: #0e1a12;
-    left: -16px;
-    transform: rotateY(90deg) translateZ(16px);
+    left: -15px;
+    transform: rotateY(90deg) translateZ(15px);
     border-radius: 2px 0 0 2px;
   }
   .book-page{
-    width: 198px;
-    height: 280px;
+    width: 188px;
+    height: 266px;
     background: #f4efe1;
     left: 4px;
     top: 5px;
@@ -130,67 +161,106 @@
     border-radius: 1px 4px 4px 1px;
   }
 
-  h1{
+  .book-card h2{
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: 1.15rem;
     color: var(--text);
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.35rem;
   }
-  .desc{
+  .book-card .desc{
     color: var(--text-soft);
-    margin: 0 0 2rem;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
   }
-
-  .btn{
+  .explore{
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.9rem;
-    border-radius: 999px;
+    gap: 0.35rem;
     font-weight: 700;
-    font-size: 0.95rem;
-    background: var(--moss-bright);
-    color: #0b1510;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    font-size: 0.9rem;
+    color: var(--moss-bright);
+    transition: gap 0.2s ease;
   }
-  .btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 34px var(--glow); }
+  .book-card:hover .explore{ gap: 0.55rem; }
+
+  /* Dummy "upcoming" placeholder */
+  .dummy-cover{
+    width: 200px;
+    height: 276px;
+    margin-bottom: 1.25rem;
+    border: 1.5px dashed var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-soft);
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    opacity: 0.6;
+  }
+  .book-card.dummy{ opacity: 0.6; cursor: default; }
+  .upcoming-badge{
+    display: inline-block;
+    background: var(--panel-strong);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
 
   .home-link{
-    display: block;
-    margin-top: 2.5rem;
+    display: inline-block;
+    margin-top: 3rem;
     color: var(--text-soft);
     font-size: 0.85rem;
     text-decoration: none;
     transition: color 0.2s ease;
   }
   .home-link:hover{ color: var(--moss-bright); }
+
+  a{ text-decoration: none; color: inherit; }
 </style>
 </head>
 <body>
 
-  <div class="wrap">
-    <div class="book-3d" id="bookWrap">
-      <div class="book-cover" id="bookCover">
-        <div class="book-page"></div>
-        <div class="book-spine"></div>
-        <div class="book-front">
-          <div>
-            <p class="book-title">AI Made Simple</p>
-            <p class="book-sub">YOUR GUIDE TO EVERY AI TOOL</p>
+  <div class="page">
+    <span class="eyebrow">Books</span>
+    <h1>Books by Faraz Ali Khan</h1>
+
+    <div class="books-grid">
+      <a href="book.html" class="book-card">
+        <div class="book-3d" id="bookWrap">
+          <div class="book-cover" id="bookCover">
+            <div class="book-page"></div>
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <div>
+                <p class="book-title">AI Made Simple</p>
+                <p class="book-sub">YOUR GUIDE TO EVERY AI TOOL</p>
+              </div>
+              <div class="book-mark">Ai</div>
+            </div>
           </div>
-          <div class="book-mark">Ai</div>
         </div>
+        <h2>AI Made Simple</h2>
+        <p class="desc">A plain-English guide to every AI tool worth using.</p>
+        <span class="explore">Explore More &rarr;</span>
+      </a>
+
+      <div class="book-card dummy">
+        <div class="dummy-cover">?</div>
+        <span class="upcoming-badge">Upcoming</span>
+        <h2>New book in the works</h2>
+        <p class="desc">Details coming soon.</p>
       </div>
     </div>
 
-    <h1>AI Made Simple by Faraz Ali Khan</h1>
-    <p class="desc">A plain-English guide that tells you exactly which AI tool to use, for what.</p>
-
-    <a href="book.html" class="btn">Explore More</a>
     <a href="index.html" class="home-link">&larr; Back to Portfolio</a>
   </div>
 
