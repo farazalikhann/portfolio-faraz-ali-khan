@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Books by Faraz Ali Khan</title>
+<meta name="description" content="AI Made Simple by Faraz Ali Khan — a plain-English guide to every AI tool worth using.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0b1510;
+    --panel-strong: rgba(255,255,255,0.07);
+    --moss: #6f9b62;
+    --moss-bright: #9fcf8a;
+    --sand: #d9c9a0;
+    --sand-soft: #c9b989;
+    --text: #f4efe1;
+    --text-soft: #a9b7a0;
+    --glow: rgba(148, 199, 128, 0.35);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  *, *::before, *::after{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(circle at 18% -10%, #17301f 0%, transparent 50%),
+      radial-gradient(circle at 88% 8%, #123021 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, #10201730 0%, transparent 60%),
+      var(--bg);
+    padding: 2rem 1.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  .wrap{ text-align: center; max-width: 380px; }
+
+  .book-3d{
+    perspective: 1200px;
+    width: 210px;
+    height: 290px;
+    margin: 0 auto 2rem;
+    animation: bookFloat 5s ease-in-out infinite;
+  }
+  @keyframes bookFloat{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-10px); }
+  }
+  .book-cover{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(-22deg) rotateX(0deg);
+    transition: transform 0.4s ease-out;
+  }
+  .book-front, .book-spine, .book-page{ position: absolute; top: 0; }
+  .book-front{
+    width: 210px;
+    height: 290px;
+    background: linear-gradient(135deg, var(--moss) 0%, #16261b 100%);
+    border-radius: 2px 8px 8px 2px;
+    box-shadow: 10px 14px 34px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.4rem;
+    backface-visibility: hidden;
+  }
+  .book-front .book-title{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .book-front .book-sub{
+    font-size: 0.7rem;
+    color: var(--sand);
+    letter-spacing: 0.03em;
+  }
+  .book-front .book-mark{
+    margin-top: auto;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #16261b;
+  }
+  .book-spine{
+    width: 32px;
+    height: 290px;
+    background: #0e1a12;
+    left: -16px;
+    transform: rotateY(90deg) translateZ(16px);
+    border-radius: 2px 0 0 2px;
+  }
+  .book-page{
+    width: 198px;
+    height: 280px;
+    background: #f4efe1;
+    left: 4px;
+    top: 5px;
+    transform: translateZ(-6px);
+    border-radius: 1px 4px 4px 1px;
+  }
+
+  h1{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--text);
+    margin: 0 0 0.6rem;
+  }
+  .desc{
+    color: var(--text-soft);
+    margin: 0 0 2rem;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.9rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--moss-bright);
+    color: #0b1510;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 34px var(--glow); }
+
+  .home-link{
+    display: block;
+    margin-top: 2.5rem;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .home-link:hover{ color: var(--moss-bright); }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="book-3d" id="bookWrap">
+      <div class="book-cover" id="bookCover">
+        <div class="book-page"></div>
+        <div class="book-spine"></div>
+        <div class="book-front">
+          <div>
+            <p class="book-title">AI Made Simple</p>
+            <p class="book-sub">YOUR GUIDE TO EVERY AI TOOL</p>
+          </div>
+          <div class="book-mark">Ai</div>
+        </div>
+      </div>
+    </div>
+
+    <h1>AI Made Simple by Faraz Ali Khan</h1>
+    <p class="desc">A plain-English guide that tells you exactly which AI tool to use, for what.</p>
+
+    <a href="book.html" class="btn">Explore More</a>
+    <a href="index.html" class="home-link">&larr; Back to Portfolio</a>
+  </div>
+
+<script>
+  const bookWrap = document.getElementById("bookWrap");
+  const bookCover = document.getElementById("bookCover");
+  const BOOK_REST_TRANSFORM = "rotateY(-22deg) rotateX(0deg)";
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    bookWrap.addEventListener("mousemove", (e) => {
+      const rect = bookWrap.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      bookCover.style.transform = `rotateY(${x * 45}deg) rotateX(${y * -30}deg)`;
+    });
+    bookWrap.addEventListener("mouseleave", () => {
+      bookCover.style.transform = BOOK_REST_TRANSFORM;
+    });
+  }
+</script>
+
+</body>
+</html>
