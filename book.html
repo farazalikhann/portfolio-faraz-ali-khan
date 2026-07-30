@@ -152,15 +152,80 @@
   .book-top-media{
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    align-items: center;
   }
-  .book-top-media img{
+
+  /* Cover slider — one photo at a time, switch with arrows / swipe / dots */
+  .cover-slider{
+    position: relative;
     width: 100%;
+    max-width: 400px;
+    height: clamp(320px, 46vw, 480px);
     border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 70px var(--glow);
     border: 1px solid rgba(255,255,255,0.1);
+    background: var(--panel-strong);
+    touch-action: pan-y;
   }
-  .book-top-media .caption{
+  .cover-track{
+    display: flex;
+    height: 100%;
+    width: 200%;
+    transition: transform 0.4s ease;
+  }
+  .cover-slide{
+    width: 50%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover-slide img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .cover-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(11,21,16,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text);
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .cover-nav:hover{ background: rgba(11,21,16,0.92); }
+  .cover-nav.prev{ left: 12px; }
+  .cover-nav.next{ right: 12px; }
+  .cover-dots{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.9rem;
+  }
+  .cover-dot{
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .cover-dot.active{ background: var(--moss-bright); transform: scale(1.2); }
+  .cover-caption{
     display: block;
     margin-top: 0.5rem;
     color: var(--text-soft);
@@ -316,14 +381,19 @@
   <header class="book-hero">
     <div class="container book-top">
       <div class="book-top-media reveal">
-        <div>
-          <img src="book-cover.jpg" alt="AI Made Simple — front cover">
-          <span class="caption">Front cover</span>
+        <div class="cover-slider" id="coverSlider">
+          <div class="cover-track" id="coverTrack">
+            <div class="cover-slide"><img src="book-cover.jpg" alt="AI Made Simple — front cover"></div>
+            <div class="cover-slide"><img src="book-back.jpg" alt="AI Made Simple — back cover"></div>
+          </div>
+          <button class="cover-nav prev" id="coverPrev" type="button" aria-label="Previous cover">&#8249;</button>
+          <button class="cover-nav next" id="coverNext" type="button" aria-label="Next cover">&#8250;</button>
         </div>
-        <div>
-          <img src="book-back.jpg" alt="AI Made Simple — back cover">
-          <span class="caption">Back cover</span>
+        <div class="cover-dots" id="coverDots">
+          <button class="cover-dot active" type="button" data-index="0" aria-label="Show front cover"></button>
+          <button class="cover-dot" type="button" data-index="1" aria-label="Show back cover"></button>
         </div>
+        <span class="cover-caption" id="coverCaption">Front cover</span>
       </div>
 
       <div class="book-top-info reveal">
@@ -496,6 +566,49 @@
   } else {
     revealEls.forEach(el => el.classList.add("in-view"));
   }
+
+  /* Cover slider — front/back cover in one slot, switch via arrows, dots, or swipe */
+  (function(){
+    const track = document.getElementById("coverTrack");
+    const prevBtn = document.getElementById("coverPrev");
+    const nextBtn = document.getElementById("coverNext");
+    const dots = document.querySelectorAll(".cover-dot");
+    const caption = document.getElementById("coverCaption");
+    const labels = ["Front cover", "Back cover"];
+    let index = 0;
+
+    function render(){
+      track.style.transform = `translateX(-${index * 50}%)`;
+      caption.textContent = labels[index];
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
+
+    function go(delta){
+      index = (index + delta + labels.length) % labels.length;
+      render();
+    }
+
+    prevBtn.addEventListener("click", () => go(-1));
+    nextBtn.addEventListener("click", () => go(1));
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        index = Number(dot.dataset.index);
+        render();
+      });
+    });
+
+    const slider = document.getElementById("coverSlider");
+    let touchStartX = null;
+    slider.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    slider.addEventListener("touchend", (e) => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+      touchStartX = null;
+    }, { passive: true });
+  })();
 </script>
 
 </body>
