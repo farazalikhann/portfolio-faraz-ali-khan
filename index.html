@@ -598,66 +598,57 @@
     transform: rotateY(-22deg) rotateX(0deg);
     transition: transform 0.4s ease-out;
   }
-  .book-front, .book-spine, .book-page{
-    position: absolute;
-    top: 0;
-  }
-  .book-front{
-    width: 210px;
-    height: 290px;
-    background: linear-gradient(135deg, var(--moss) 0%, #16261b 100%);
-    border-radius: 2px 8px 8px 2px;
+  .book-photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 6px;
     box-shadow: 10px 14px 34px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1.4rem;
-    backface-visibility: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
   }
-  .book-front .book-title{
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #fff;
-    line-height: 1.25;
-    margin-bottom: 0.6rem;
-  }
-  .book-front .book-sub{
-    font-size: 0.7rem;
-    color: var(--sand);
-    letter-spacing: 0.03em;
-  }
-  .book-front .book-mark{
-    margin-top: auto;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--sand);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
+  .book-subhead{
     font-weight: 700;
-    color: #16261b;
+    color: var(--moss-bright);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 1.5rem 0 0.5rem;
   }
-  .book-spine{
-    width: 32px;
-    height: 290px;
-    background: #0e1a12;
-    left: -16px;
-    transform: rotateY(90deg) translateZ(16px);
-    border-radius: 2px 0 0 2px;
+  .book-copy p.desc{
+    color: var(--text-soft);
+    margin: 0 0 0.75rem;
   }
-  .book-page{
-    width: 198px;
-    height: 280px;
-    background: #f4efe1;
-    left: 4px;
-    top: 5px;
-    transform: translateZ(-6px);
-    border-radius: 1px 4px 4px 1px;
+  .book-actions{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+  .book-gallery{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 820px;
+    margin: 3rem auto 0;
+  }
+  .book-gallery a{
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    aspect-ratio: 3 / 4;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .book-gallery a:hover{
+    transform: translateY(-4px);
+    border-color: rgba(159,207,138,0.4);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.4);
+  }
+  .book-gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .book-copy ul{
     list-style: none;
@@ -765,6 +756,8 @@
     }
     .book-copy li{ text-align: left; }
     .book-badge{ margin: 0 auto; }
+    .book-actions{ justify-content: center; }
+    .book-gallery{ grid-template-columns: repeat(2, 1fr); }
     .stats{ grid-template-columns: 1fr; max-width: 320px; }
   }
 
@@ -939,35 +932,91 @@
       </div>
 
       <div class="book-grid">
-        <!-- CSS-only 3D book cover — tilts toward the mouse -->
+        <!-- Real cover photo — tilts toward the mouse -->
         <div class="book-3d" id="bookWrap">
           <div class="book-cover" id="bookCover">
-            <div class="book-page"></div>
-            <div class="book-spine"></div>
-            <div class="book-front">
-              <div>
-                <p class="book-title">AI Made Simple</p>
-                <p class="book-sub">YOUR GUIDE TO EVERY AI TOOL</p>
-              </div>
-              <div class="book-mark">Ai</div>
-            </div>
+            <img class="book-photo" src="book-cover.jpg" alt="AI Made Simple — book cover by Faraz Ali Khan">
           </div>
         </div>
 
         <div class="book-copy">
-          <span class="book-badge"><span class="dot"></span> Coming soon</span>
+          <span class="book-badge"><span class="dot"></span> Available now</span>
           <h3 style="margin-top: 1rem;">AI Made Simple: Your Guide to Every AI Tool</h3>
-          <p style="color: var(--text-soft);">
-            A practical, no-fluff guide that tells you exactly which AI tool to use for which task —
-            written in plain human language, no jargon required.
+
+          <p class="desc">
+            So many AIs. ChatGPT, Claude, Gemini, Midjourney, Sora... and a new one every week.
+            Everybody is talking about them. But almost nobody tells you the one thing you actually
+            need to know: which AI should YOU use, and for what?
           </p>
+          <p class="desc">
+            If that question has ever left you confused, this book was written for you.
+          </p>
+          <p class="desc">
+            <em>AI Made Simple</em> is a plain-English guide that finally makes sense of the AI world.
+            No jargon. No technical theory. No computer science degree required. If you can send a
+            message on your phone, you can use every single tool in this book.
+          </p>
+
+          <p class="book-subhead">What makes this book different</p>
+          <p class="desc">
+            Most AI books explain how AI works. This one shows you what to DO with it. Think of AI
+            tools as a workshop full of expert workers. One is a brilliant writer. One is a talented
+            artist. One makes videos, one composes music, one writes code, one does your research.
+            The secret is knowing which expert to call for which job. That is exactly what you will
+            master here.
+          </p>
+
+          <p class="book-subhead">What you'll find inside</p>
           <ul>
-            <li><span class="tick">&#10003;</span> One chapter per real-world task</li>
-            <li><span class="tick">&#10003;</span> One free + one paid AI recommendation per job</li>
-            <li><span class="tick">&#10003;</span> Ready-to-use prompts you can copy and run</li>
-            <li><span class="tick">&#10003;</span> Written in plain, human language — no jargon</li>
+            <li><span class="tick">&#10003;</span> One expert per chapter — the best AI for writing, images, videos, music, coding, studying, presentations, and office work</li>
+            <li><span class="tick">&#10003;</span> One FREE option and one PAID option for every task, so you know when free is enough</li>
+            <li><span class="tick">&#10003;</span> Ready-made prompts in every chapter — copy, paste, change a few words, done in five minutes</li>
+            <li><span class="tick">&#10003;</span> Simple diagrams that explain each idea at a single glance</li>
+            <li><span class="tick">&#10003;</span> Special chapters for students, job seekers, business owners, and content creators</li>
+            <li><span class="tick">&#10003;</span> An honest chapter on AI's biggest mistakes, and exactly when NOT to trust it</li>
           </ul>
+
+          <p class="book-subhead">Who this book is for</p>
+          <p class="desc">
+            Students who want to study smarter and finish projects faster. Professionals who want to
+            save hours every week. Shop and business owners who want to grow without hiring a team.
+            Content creators who want to post consistently. Parents, job seekers, and complete
+            beginners who are tired of feeling left behind by technology. If any of that sounds like
+            you, you are holding the right book.
+          </p>
+
+          <p class="book-subhead">What you'll be able to do</p>
+          <p class="desc">
+            By the last page, you will not just know the names of AI tools — you will actually be
+            able to use them. Write a professional email in seconds. Design a poster without any
+            design skills. Turn your chapter into an audio podcast. Build a small website by just
+            describing it. Make a birthday song with someone's name in it. Practice for a job
+            interview at 2 AM. And most importantly, you will know when to trust AI, and when to
+            double-check it.
+          </p>
+          <p class="desc">
+            AI is not the future anymore. It is the present. The only real question is whether you
+            will use it, or watch others use it and wonder how they got ahead.
+          </p>
+          <p class="desc" style="color: var(--sand); font-weight: 700;">
+            One book. Every AI tool. Simple words. Turn the page, and take the lead.
+          </p>
+
+          <div class="book-actions">
+            <!-- TODO: replace with real Amazon product link -->
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buy Now on Amazon</a>
+            <!-- TODO: replace with real Pothi.com product link -->
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Buy Now on Pothi.com</a>
+          </div>
         </div>
+      </div>
+
+      <!-- A few real photos of the printed copies -->
+      <div class="book-gallery">
+        <a href="book-stack.jpg" target="_blank" rel="noopener noreferrer"><img src="book-stack.jpg" alt="Printed copies of AI Made Simple stacked together" loading="lazy"></a>
+        <a href="book-back.jpg" target="_blank" rel="noopener noreferrer"><img src="book-back.jpg" alt="Back cover of AI Made Simple with blurb" loading="lazy"></a>
+        <a href="book-page-coding.jpg" target="_blank" rel="noopener noreferrer"><img src="book-page-coding.jpg" alt="Sample page from the coding chapter" loading="lazy"></a>
+        <a href="book-page-poster.jpg" target="_blank" rel="noopener noreferrer"><img src="book-page-poster.jpg" alt="Sample page from the AI images chapter" loading="lazy"></a>
       </div>
     </div>
   </section>
