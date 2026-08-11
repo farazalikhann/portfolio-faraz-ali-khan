@@ -8,23 +8,24 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg: #0b1510;
-    --panel: rgba(255,255,255,0.035);
-    --panel-strong: rgba(255,255,255,0.07);
-    --border: rgba(168,195,152,0.16);
-    --moss: #6f9b62;
-    --moss-bright: #9fcf8a;
-    --sand: #d9c9a0;
-    --sand-soft: #c9b989;
-    --text: #f4efe1;
-    --text-soft: #a9b7a0;
-    --glow: rgba(148, 199, 128, 0.35);
-    --font-display: "Fraunces", Georgia, serif;
-    --font-body: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+    --bg: #050810;
+    --panel: rgba(148,197,255,0.035);
+    --panel-strong: rgba(148,197,255,0.07);
+    --border: rgba(56,189,248,0.18);
+    --moss: #0891b2;
+    --moss-bright: #38bdf8;
+    --sand: #fbbf24;
+    --sand-soft: #d97706;
+    --text: #eaf2ff;
+    --text-soft: #8ea3c4;
+    --glow: rgba(56,189,248,0.35);
+    --font-display: "Space Grotesk", -apple-system, sans-serif;
+    --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
   }
   *, *::before, *::after{ box-sizing: border-box; }
   body{
@@ -35,9 +36,9 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     background:
-      radial-gradient(circle at 18% -10%, #17301f 0%, transparent 50%),
-      radial-gradient(circle at 88% 8%, #123021 0%, transparent 45%),
-      radial-gradient(circle at 50% 100%, #10201730 0%, transparent 60%),
+      radial-gradient(circle at 18% -10%, #0d3350 0%, transparent 50%),
+      radial-gradient(circle at 88% 8%, #0a2440 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, #05142530 0%, transparent 60%),
       var(--bg);
     padding: 3rem 2.5rem;
   }
@@ -106,7 +107,7 @@
   .book-front{
     width: 200px;
     height: 276px;
-    background: linear-gradient(135deg, var(--moss) 0%, #16261b 100%);
+    background: linear-gradient(135deg, var(--moss) 0%, #0b1220 100%);
     border-radius: 2px 8px 8px 2px;
     box-shadow: 10px 14px 34px rgba(0,0,0,0.5);
     display: flex;
@@ -141,12 +142,12 @@
     justify-content: center;
     font-family: var(--font-display);
     font-weight: 700;
-    color: #16261b;
+    color: #050810;
   }
   .book-spine{
     width: 30px;
     height: 276px;
-    background: #0e1a12;
+    background: #060b16;
     left: -15px;
     transform: rotateY(90deg) translateZ(15px);
     border-radius: 2px 0 0 2px;
@@ -154,7 +155,7 @@
   .book-page{
     width: 188px;
     height: 266px;
-    background: #f4efe1;
+    background: #eef3fb;
     left: 4px;
     top: 5px;
     transform: translateZ(-6px);

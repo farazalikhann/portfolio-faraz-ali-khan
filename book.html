@@ -8,27 +8,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg: #0b1510;
-    --panel: rgba(255,255,255,0.035);
-    --panel-strong: rgba(255,255,255,0.07);
-    --border: rgba(168,195,152,0.16);
-    --forest: #16261b;
-    --forest-light: #22392a;
-    --moss: #6f9b62;
-    --moss-bright: #9fcf8a;
-    --sand: #d9c9a0;
-    --sand-soft: #c9b989;
-    --text: #f4efe1;
-    --text-soft: #a9b7a0;
-    --glow: rgba(148, 199, 128, 0.35);
+    --bg: #050810;
+    --panel: rgba(148,197,255,0.035);
+    --panel-strong: rgba(148,197,255,0.07);
+    --border: rgba(56,189,248,0.18);
+    --forest: #0b1220;
+    --forest-light: #101c33;
+    --moss: #0891b2;
+    --moss-bright: #38bdf8;
+    --sand: #fbbf24;
+    --sand-soft: #d97706;
+    --text: #eaf2ff;
+    --text-soft: #8ea3c4;
+    --glow: rgba(56,189,248,0.35);
     --radius: 18px;
     --max-width: 1120px;
-    --font-display: "Fraunces", Georgia, serif;
-    --font-body: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "Space Grotesk", -apple-system, sans-serif;
+    --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
   }
   *, *::before, *::after{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
@@ -39,9 +40,9 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     background:
-      radial-gradient(circle at 18% -10%, #17301f 0%, transparent 50%),
-      radial-gradient(circle at 88% 8%, #123021 0%, transparent 45%),
-      radial-gradient(circle at 50% 100%, #10201730 0%, transparent 60%),
+      radial-gradient(circle at 18% -10%, #0d3350 0%, transparent 50%),
+      radial-gradient(circle at 88% 8%, #0a2440 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, #05142530 0%, transparent 60%),
       var(--bg);
     overflow-x: hidden;
   }
@@ -86,7 +87,7 @@
     position: sticky;
     top: 0;
     z-index: 500;
-    background: rgba(11,21,16,0.75);
+    background: rgba(5,8,16,0.75);
     backdrop-filter: blur(16px) saturate(160%);
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -129,7 +130,7 @@
     border: 2px solid transparent;
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
-  .btn-primary{ background: var(--moss-bright); color: #0b1510; }
+  .btn-primary{ background: var(--moss-bright); color: #050810; }
   .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 14px 34px var(--glow); }
   .btn-outline{ background: transparent; border-color: var(--border); color: var(--text); }
   .btn-outline:hover{
@@ -194,7 +195,7 @@
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(11,21,16,0.7);
+    background: rgba(5,8,16,0.7);
     border: 1px solid rgba(255,255,255,0.15);
     color: var(--text);
     font-size: 1.2rem;
@@ -205,7 +206,7 @@
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
   }
-  .cover-nav:hover{ background: rgba(11,21,16,0.92); }
+  .cover-nav:hover{ background: rgba(5,8,16,0.92); }
   .cover-nav.prev{ left: 12px; }
   .cover-nav.next{ right: 12px; }
   .cover-dots{
@@ -272,7 +273,7 @@
   }
   .buy-row:hover{
     transform: translateY(-3px);
-    border-color: rgba(159,207,138,0.4);
+    border-color: rgba(56,189,248,0.4);
     box-shadow: 0 16px 36px rgba(0,0,0,0.4);
   }
   .buy-row-head{
@@ -325,7 +326,7 @@
   .book-copy li{ display: flex; align-items: flex-start; gap: 0.6rem; color: var(--text-soft); font-size: 0.95rem; }
   .book-copy li .tick{
     flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
-    background: rgba(159,207,138,0.15); color: var(--moss-bright);
+    background: rgba(56,189,248,0.15); color: var(--moss-bright);
     display: flex; align-items: center; justify-content: center;
     font-size: 0.75rem; margin-top: 0.1rem;
   }
@@ -346,7 +347,7 @@
   }
   .book-gallery a:hover{
     transform: translateY(-4px);
-    border-color: rgba(159,207,138,0.4);
+    border-color: rgba(56,189,248,0.4);
     box-shadow: 0 14px 30px rgba(0,0,0,0.4);
   }
   .book-gallery img{ width: 100%; height: 100%; object-fit: cover; }

@@ -6,33 +6,34 @@
 <title>Faraz Ali Khan — Portfolio</title>
 <meta name="description" content="Faraz Ali Khan — B.Tech CSE student at Integral University, Lucknow. AI, Data Science, Python, DBMS, Startups & Space Science.">
 
-<!-- Google Fonts: Fraunces (serif display) + Karla (sans body) -->
+<!-- Google Fonts: Space Grotesk (display) + IBM Plex Sans (body) + JetBrains Mono (code accents) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   /* ============================================
-     0. CSS VARIABLES — dark earthy palette
+     0. CSS VARIABLES — dark circuit / engineering palette
      ============================================ */
   :root{
-    --bg: #0b1510;             /* deep near-black forest background */
-    --panel: rgba(255,255,255,0.035);   /* glass card fill */
-    --panel-strong: rgba(255,255,255,0.07);
-    --border: rgba(168,195,152,0.16);   /* soft moss-tinted borders */
-    --forest: #16261b;         /* dark forest panel */
-    --forest-light: #22392a;   /* lighter forest panel */
-    --moss: #6f9b62;           /* moss green — accents */
-    --moss-bright: #9fcf8a;    /* bright moss — highlights, glow */
-    --sand: #d9c9a0;           /* sand/beige — chips, badges */
-    --sand-soft: #c9b989;      /* darker sand — borders */
-    --text: #f4efe1;           /* warm off-white — primary text */
-    --text-soft: #a9b7a0;      /* muted sage-grey — secondary text */
-    --glow: rgba(148, 199, 128, 0.35);  /* moss glow for shadows */
+    --bg: #050810;              /* deep space-navy background */
+    --panel: rgba(148,197,255,0.035);   /* glass card fill */
+    --panel-strong: rgba(148,197,255,0.07);
+    --border: rgba(56,189,248,0.18);    /* circuit-blue borders */
+    --forest: #0b1220;          /* dark navy panel */
+    --forest-light: #101c33;    /* lighter navy panel */
+    --moss: #0891b2;            /* circuit teal — accents */
+    --moss-bright: #38bdf8;     /* electric cyan — highlights, glow */
+    --sand: #fbbf24;            /* copper/amber — chips, badges */
+    --sand-soft: #d97706;       /* darker copper — borders */
+    --text: #eaf2ff;            /* cool white — primary text */
+    --text-soft: #8ea3c4;       /* muted blue-grey — secondary text */
+    --glow: rgba(56,189,248,0.35);  /* circuit glow for shadows */
     --radius: 18px;
     --max-width: 1120px;
-    --font-display: "Fraunces", Georgia, serif;
-    --font-body: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "Space Grotesk", -apple-system, sans-serif;
+    --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
   }
 
   /* ============================================
@@ -47,11 +48,32 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     background:
-      radial-gradient(circle at 18% -10%, #17301f 0%, transparent 50%),
-      radial-gradient(circle at 88% 8%, #123021 0%, transparent 45%),
-      radial-gradient(circle at 50% 100%, #10201730 0%, transparent 60%),
+      radial-gradient(circle at 18% -10%, #0d3350 0%, transparent 50%),
+      radial-gradient(circle at 88% 8%, #0a2440 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, #05142530 0%, transparent 60%),
       var(--bg);
     overflow-x: hidden;
+  }
+  /* Faint engineering blueprint grid, fixed behind all content */
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 90%);
+  }
+  #circuitCanvas{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.55;
   }
   img{ max-width: 100%; display: block; }
   a{ color: inherit; text-decoration: none; }
@@ -64,6 +86,7 @@
   section{ padding: 6rem 1.5rem; position: relative; }
   .container{ max-width: var(--max-width); margin: 0 auto; }
   .eyebrow{
+    font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
@@ -86,27 +109,27 @@
   }
 
   /* ============================================
-     2. CUSTOM CURSOR (desktop, motion-ok only)
+     2. CUSTOM CURSOR (desktop, motion-ok only) — one simple dot
      ============================================ */
-  .cursor-dot, .cursor-ring{
+  .cursor-dot{
     position: fixed;
     top: 0; left: 0;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--moss-bright);
     pointer-events: none;
     z-index: 9999;
-    border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    transition: opacity 0.3s ease, transform 0.15s ease, background 0.15s ease;
   }
-  .cursor-dot{ width: 7px; height: 7px; background: var(--moss-bright); }
-  .cursor-ring{ width: 34px; height: 34px; border: 1.5px solid rgba(159,207,138,0.55); }
-  body.has-custom-cursor .cursor-dot,
-  body.has-custom-cursor .cursor-ring{ opacity: 1; }
+  body.has-custom-cursor .cursor-dot{ opacity: 1; }
   body.has-custom-cursor{ cursor: none; }
   body.has-custom-cursor a, body.has-custom-cursor button{ cursor: none; }
-  .cursor-ring.hovering{
-    width: 54px; height: 54px;
-    background: rgba(159,207,138,0.12);
-    border-color: var(--moss-bright);
+  .cursor-dot.hovering{
+    transform: scale(1.7);
+    background: rgba(56,189,248,0.15);
   }
 
   /* ============================================
@@ -126,14 +149,14 @@
     position: sticky;
     top: 0;
     z-index: 500;
-    background: rgba(11,21,16,0.55);
+    background: rgba(5,8,16,0.55);
     backdrop-filter: blur(16px) saturate(160%);
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     border-bottom: 1px solid rgba(255,255,255,0.06);
     transition: background 0.3s ease, box-shadow 0.3s ease;
   }
   .navbar.scrolled{
-    background: rgba(9,17,13,0.85);
+    background: rgba(5,8,16,0.85);
     box-shadow: 0 10px 30px rgba(0,0,0,0.35);
   }
   .nav-inner{
@@ -145,11 +168,13 @@
     justify-content: space-between;
   }
   .nav-logo{
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--text);
   }
+  .nav-logo::before{ content: "<"; color: var(--moss-bright); }
+  .nav-logo::after{ content: "/>"; color: var(--moss-bright); }
   .nav-links{
     list-style: none;
     display: flex;
@@ -211,8 +236,8 @@
     z-index: 0;
     pointer-events: none;
     background:
-      radial-gradient(circle at 25% 30%, rgba(111,155,98,0.28) 0%, transparent 45%),
-      radial-gradient(circle at 78% 65%, rgba(159,207,138,0.18) 0%, transparent 50%);
+      radial-gradient(circle at 25% 30%, rgba(8,145,178,0.28) 0%, transparent 45%),
+      radial-gradient(circle at 78% 65%, rgba(56,189,248,0.18) 0%, transparent 50%);
     background-size: 160% 160%;
     animation: auroraShift 18s ease-in-out infinite alternate;
   }
@@ -220,30 +245,50 @@
     0%{ background-position: 0% 0%, 100% 100%; }
     100%{ background-position: 30% 20%, 70% 80%; }
   }
-  .particles{
+  /* Decorative rotating 3D "chip" cube — desktop only */
+  .hero-cube-wrap{
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
+    top: 10%;
+    right: 5%;
+    width: 108px;
+    height: 108px;
+    perspective: 700px;
+    z-index: 1;
+    display: none;
   }
-  .particle{
+  @media (min-width: 900px){ .hero-cube-wrap{ display: block; } }
+  .hero-cube{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: cubeSpin 16s linear infinite;
+  }
+  @keyframes cubeSpin{
+    from{ transform: rotateX(0deg) rotateY(0deg); }
+    to{ transform: rotateX(360deg) rotateY(360deg); }
+  }
+  .cube-face{
     position: absolute;
-    bottom: -5%;
-    width: var(--size);
-    height: var(--size);
-    background: radial-gradient(circle, var(--moss-bright), transparent 70%);
-    border-radius: 50%;
-    opacity: 0;
-    filter: blur(0.4px);
-    animation: floatUp var(--duration) linear infinite;
+    width: 108px;
+    height: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--moss-bright);
+    background: rgba(56,189,248,0.06);
+    border: 1px solid var(--border);
   }
-  @keyframes floatUp{
-    0%{ transform: translate(0, 0); opacity: 0; }
-    12%{ opacity: 0.6; }
-    88%{ opacity: 0.45; }
-    100%{ transform: translate(var(--drift), -620px); opacity: 0; }
-  }
+  .cube-face.front{ transform: translateZ(54px); }
+  .cube-face.back{ transform: rotateY(180deg) translateZ(54px); }
+  .cube-face.right{ transform: rotateY(90deg) translateZ(54px); }
+  .cube-face.left{ transform: rotateY(-90deg) translateZ(54px); }
+  .cube-face.top{ transform: rotateX(90deg) translateZ(54px); }
+  .cube-face.bottom{ transform: rotateX(-90deg) translateZ(54px); }
   .hero .container{ position: relative; z-index: 1; max-width: 720px; }
   .hero-avatar-wrap{
     width: 140px;
@@ -256,7 +301,7 @@
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--moss-bright);
-    box-shadow: 0 0 0 6px rgba(159,207,138,0.12), 0 20px 45px rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 6px rgba(56,189,248,0.12), 0 20px 45px rgba(0,0,0,0.5);
     animation: floatAvatar 5s ease-in-out infinite;
   }
   @keyframes floatAvatar{
@@ -265,6 +310,7 @@
   }
   .hero-badge{
     display: inline-block;
+    font-family: var(--font-mono);
     background: var(--panel-strong);
     border: 1px solid var(--border);
     color: var(--sand);
@@ -330,7 +376,7 @@
   }
   .btn-primary{
     background: var(--moss-bright);
-    color: #0b1510;
+    color: #050810;
   }
   .btn-primary:hover{
     transform: translateY(-3px);
@@ -400,7 +446,7 @@
   }
   .about-card:hover{
     transform: translateY(-5px);
-    border-color: rgba(159,207,138,0.4);
+    border-color: rgba(56,189,248,0.4);
     box-shadow: 0 20px 45px rgba(0,0,0,0.45), 0 0 40px var(--glow);
   }
   .about-row{
@@ -432,6 +478,7 @@
     margin-top: 1.75rem;
   }
   .chip{
+    font-family: var(--font-mono);
     background: var(--panel-strong);
     border: 1px solid var(--sand-soft);
     color: var(--sand);
@@ -456,7 +503,7 @@
   }
   .chip:hover{
     background: var(--moss-bright);
-    color: #0b1510;
+    color: #050810;
     border-color: var(--moss-bright);
     transform: translateY(-3px);
   }
@@ -480,7 +527,7 @@
   }
   .project-card:hover{
     transform: translateY(-6px);
-    border-color: rgba(159,207,138,0.4);
+    border-color: rgba(56,189,248,0.4);
     box-shadow: 0 20px 45px rgba(0,0,0,0.45), 0 0 40px var(--glow);
   }
   .project-card h3{
@@ -594,7 +641,7 @@
   }
   .contact-card:hover{
     transform: translateY(-4px);
-    border-color: rgba(159,207,138,0.4);
+    border-color: rgba(56,189,248,0.4);
     background: var(--panel-strong);
     box-shadow: 0 16px 40px var(--glow);
   }
@@ -625,7 +672,7 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: rgba(9,17,13,0.96);
+      background: rgba(5,8,16,0.96);
       backdrop-filter: blur(16px);
       flex-direction: column;
       align-items: center;
@@ -647,15 +694,17 @@
     .about-row{ flex-direction: column; gap: 0.15rem; }
     .about-row .value{ text-align: left; }
     body.has-custom-cursor{ cursor: auto; }
-    .cursor-dot, .cursor-ring{ display: none; }
+    .cursor-dot{ display: none; }
   }
 </style>
 </head>
 <body>
 
-  <!-- Custom cursor elements (enabled via JS only on fine-pointer, motion-ok devices) -->
+  <!-- Custom cursor: one simple dot (enabled via JS only on fine-pointer, motion-ok devices) -->
   <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Circuit-node canvas background -->
+  <canvas id="circuitCanvas"></canvas>
 
   <!-- ============================================
        NAVIGATION
@@ -681,7 +730,16 @@
        ============================================ -->
   <header class="hero" id="home">
     <div class="hero-bg" id="heroBg"></div>
-    <div class="particles" id="particles"></div>
+    <div class="hero-cube-wrap" aria-hidden="true">
+      <div class="hero-cube">
+        <div class="cube-face front">AI</div>
+        <div class="cube-face back">CSE</div>
+        <div class="cube-face right">PY</div>
+        <div class="cube-face left">SQL</div>
+        <div class="cube-face top">&lt;/&gt;</div>
+        <div class="cube-face bottom">DATA</div>
+      </div>
+    </div>
     <div class="container">
       <div class="hero-avatar-wrap">
         <img class="hero-avatar" src="profile.jpg" alt="Faraz Ali Khan">
@@ -868,22 +926,71 @@
   updateNavbarBg();
 
   /* ============================================
-     Hero: floating particles (skipped if reduced motion)
+     Circuit-node network: fixed full-page canvas background
+     (skipped entirely if reduced motion is preferred)
      ============================================ */
-  const particleContainer = document.getElementById("particles");
-  if (!prefersReducedMotion) {
-    const PARTICLE_COUNT = 22;
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const p = document.createElement("span");
-      p.className = "particle";
-      const size = Math.random() * 8 + 5;
-      p.style.setProperty("--size", size + "px");
-      p.style.left = Math.random() * 100 + "%";
-      p.style.setProperty("--drift", (Math.random() * 80 - 40) + "px");
-      p.style.setProperty("--duration", (Math.random() * 10 + 14) + "s");
-      p.style.animationDelay = (Math.random() * 14) + "s";
-      particleContainer.appendChild(p);
+  const circuitCanvas = document.getElementById("circuitCanvas");
+  if (circuitCanvas && !prefersReducedMotion) {
+    const ctx = circuitCanvas.getContext("2d");
+    let cw, ch, nodes;
+
+    function sizeCanvas(){
+      cw = circuitCanvas.width = window.innerWidth;
+      ch = circuitCanvas.height = window.innerHeight;
     }
+
+    function makeNodes(){
+      const count = Math.round((cw * ch) / 28000);
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * cw,
+        y: Math.random() * ch,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25
+      }));
+    }
+
+    sizeCanvas();
+    makeNodes();
+    window.addEventListener("resize", () => { sizeCanvas(); makeNodes(); }, { passive: true });
+
+    const LINK_DIST = 150;
+
+    function drawCircuit(){
+      ctx.clearRect(0, 0, cw, ch);
+
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > cw) n.vx *= -1;
+        if (n.y < 0 || n.y > ch) n.vy *= -1;
+      });
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = `rgba(56,189,248,${0.16 * (1 - dist / LINK_DIST)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      ctx.fillStyle = "rgba(56,189,248,0.6)";
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawCircuit);
+    }
+
+    drawCircuit();
   }
 
   /* ============================================
@@ -909,7 +1016,7 @@
   /* ============================================
      Hero: typing animation cycling through roles
      ============================================ */
-  const roles = ["CSE Student", "AI Enthusiast", "Author", "Builder"];
+  const roles = ["CSE Student", "AI Engineer", "Backend Builder", "Author"];
   const typedEl = document.getElementById("typedText");
 
   if (prefersReducedMotion) {
@@ -1175,37 +1282,39 @@
   loadRepoStat();
 
   /* ============================================
-     Custom animated cursor (fine pointer + motion-ok only)
+     Custom cursor: single dot, direct tracking (kept simple on purpose)
      ============================================ */
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
   if (!prefersReducedMotion && !isCoarsePointer) {
     document.body.classList.add("has-custom-cursor");
-
     const cursorDot = document.getElementById("cursorDot");
-    const cursorRing = document.getElementById("cursorRing");
-
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
 
     window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+      cursorDot.style.left = e.clientX + "px";
+      cursorDot.style.top = e.clientY + "px";
     });
 
-    function animateRing(){
-      // Ease the ring toward the pointer for a smooth trailing effect
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
     document.querySelectorAll("a, button").forEach(el => {
-      el.addEventListener("mouseenter", () => cursorRing.classList.add("hovering"));
-      el.addEventListener("mouseleave", () => cursorRing.classList.remove("hovering"));
+      el.addEventListener("mouseenter", () => cursorDot.classList.add("hovering"));
+      el.addEventListener("mouseleave", () => cursorDot.classList.remove("hovering"));
+    });
+  }
+
+  /* ============================================
+     3D tilt-on-hover for cards (fine pointer + motion-ok only)
+     ============================================ */
+  if (!prefersReducedMotion && !isCoarsePointer) {
+    document.querySelectorAll(".about-card, .project-card").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(800px) rotateX(${y * -7}deg) rotateY(${x * 7}deg) translateY(-6px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
     });
   }
 </script>
